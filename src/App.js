@@ -85,7 +85,7 @@ function App() {
   const [pokemon, setPokemon] = React.useState([]);
 
   React.useEffect(() => {
-    fetch(`http://localhost:3000/starting-react/pokemon.json`)
+    fetch(`https://apollostudios159.github.io/starting-react/pokemon.json`)
       .then((resp) => resp.json())
       .then((data) => setPokemon(data));
   }, []);
