@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "@emotion/styled";
+import { useSelector, useDispatch } from "react-redux";
 
 const Input = styled.input`
   width: 100%;
@@ -7,12 +8,20 @@ const Input = styled.input`
   font-size: large;
 `;
 
-function PokemonFilter({ filter, filterSet }) {
+function PokemonFilter() {
+  const dispatch = useDispatch();
+  const filter = useSelector((state) => state.filter);
+
   return (
     <Input
       type="text"
       value={filter}
-      onChange={(evt) => filterSet(evt.target.value)}
+      onChange={(evt) =>
+        dispatch({
+          type: "SET_FILTER",
+          payload: evt.target.value,
+        })
+      }
     />
   );
 }
